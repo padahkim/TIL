@@ -3,5 +3,5 @@
 
 <h3>Rules</h3>
 <ul>
-  <li>Study log</li>
+  <li>Study log in the day</li>
 </ul>
