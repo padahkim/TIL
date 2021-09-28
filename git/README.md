@@ -7,6 +7,7 @@ Version control system
 - [A Visual Git Reference by marklodato](https://marklodato.github.io/visual-git-guide/index-ko.html)
 - [ Visualizing Git Concepts with D3 by onlywei](http://onlywei.github.io/explain-git-with-d3/#/)
 - [깃 명령어 실행 순서(로컬폴더 시작) by wayhome25](https://github.com/wayhome25/git_practice/blob/master/README.md#%EC%A3%BC%EC%9A%94-%EB%AA%85%EB%A0%B9%EC%96%B4)
+- [Git Error CRLF해결](https://blog.jaeyoon.io/2018/01/git-crlf.html)
 # Terminologies
 
 ### **Snapshots**
@@ -132,4 +133,28 @@ git pull origin(위에서 등록한 이름) master // 깃허브에서 풀한다.
 git pull origin master --allow-unrelated-histories // fatal: refusing to merge unrelated histories 오류 발생시
 git stash // origin 파일과 master 파일 충돌시 명령 (error: Your local changes to the following files would be overwritten by merge)
 
+-----------Git 에러 CRLF will be replaced by LF (혹은 반대) 핸들링하는 방법---------
+warning: CRLF will be replaced by LF in some/file.file.
+The file will have its original line endings in your working directory.
+이는 맥 또는 리눅스를 쓰는 개발자와 윈도우 쓰는 개발자가 Git으로 협업할 때 발생하는 Whitespace 에러다. 유닉스 시스템에서는 한 줄의 끝이 LF(Line Feed)로 이루어지는 반면, 윈도우에서는 줄 하나가 CR(Carriage Return)와 LF(Line Feed), 즉 CRLF로 이루어지기 때문이다. 따라서 어느 한 쪽을 선택할지 Git에게 혼란이 온 것이다.
+
+유닉스 OS을 쓰고 있다면 CRLF will be replaced by LF in… 에러 메시지가 뜰 것이고, 윈도우를 사용하고 있다면 LF will be replaced by CRLF in… 에러 메시지가 뜰 것이다.
+
+둘 중 뭐든간에 해결 방법은 같다. Git은 똑똑해서 이를 자동 변환해주는 core.autocrlf 라는 기능을 가지고 있는데, 이 기능을 켜주기만 하면 된다.
+
+
+
+해답은 core.autocrlf 를 켜는 것!
+
+이 기능은 개발자가 git에 코드를 추가했을 때 (예컨대 커밋할 때)에는 CRLF를 LF로 변환해주고, git의 코드를 개발자가 조회할 때 (예컨대 clone한다거나 할 때)에는 LF를 CRLF로 변환해준다.
+
+그러므로 윈도우 사용자의 경우 이러한 변환이 항상 실행되도록 다음과 같은 명령어를 입력한다. 물론 시스템 전체가 아닌 해당 프로젝트에만 적용하고 싶다면 —global 을 빼주면 된다.
+
+git config --global core.autocrlf true
+리눅스나 맥을 사용하고 있는 경우, 조회할 때 LF를 CRLF를 변환하는 것은 원하지 않을 것이다. 따라서 뒤에 input이라는 명령어를 추가해줌으로써 단방향으로만 변환이 이루어지도록 설정한다.
+
+git config --global core.autocrlf true input
+혹은 이러한 변환 기능을 원하지 않고, 그냥 에러 메시지 끄고 알아서 작업하고 싶은 경우에는 아래 명령어로 경고메시지 기능인 core.safecrlf를 꺼주면 된다.
+
+git config --global core.safecrlf false
 ```
