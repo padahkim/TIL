@@ -99,6 +99,9 @@ Github과 같은 클라우드에 저장된 Git 프로젝트의 현재 상태를 
 현재 위치한 브랜치의 커밋 내역을 확인하는 명령
 `git log `
 
+### git rm sample.txt
+### git commit -m "Delete sample.txt"
+git add .로 필요없는 파일까지 전부 커밋해버렸을때 로컬에서는 남겨놓고 깃에서만 삭제
 
 # Command flow (from local)
 ```
@@ -129,20 +132,32 @@ git remote add origin(이름아무거나ㅇㅋ) https://github.com/username/mypr
 git remote set-url origin  https://111.111.111.111/저장소.git
 git push origin(위에서 등록한 이름) master // 깃허브로 푸시한다.
 git pull origin(위에서 등록한 이름) master // 깃허브에서 풀한다. 
+git remote rm origin //깃 리모트 삭제
 
 git pull origin master --allow-unrelated-histories // fatal: refusing to merge unrelated histories 오류 발생시
 git stash // origin 파일과 master 파일 충돌시 명령 (error: Your local changes to the following files would be overwritten by merge)
+
+
+------------error : src refspec master does not match any -----------
+git init//해당 디렉토리를 pull 안해서 생기므로 이와 같이 해결 
+git add .
+git commit -m "message"
+
+------------error : Updates were rejected because the tip of your current branch is behind its remote-------------
+git push -u origin +main 혹은 +master
+
+------------error : Updates were rejected because the remote contains work that you do not have locally------------
+git remote add origin
+git pull origin main 혹은 master 을 한뒤에
+git push origin main 혹은 master
+
 
 -----------Git 에러 CRLF will be replaced by LF (혹은 반대) 핸들링하는 방법---------
 warning: CRLF will be replaced by LF in some/file.file.
 The file will have its original line endings in your working directory.
 이는 맥 또는 리눅스를 쓰는 개발자와 윈도우 쓰는 개발자가 Git으로 협업할 때 발생하는 Whitespace 에러다. 유닉스 시스템에서는 한 줄의 끝이 LF(Line Feed)로 이루어지는 반면, 윈도우에서는 줄 하나가 CR(Carriage Return)와 LF(Line Feed), 즉 CRLF로 이루어지기 때문이다. 따라서 어느 한 쪽을 선택할지 Git에게 혼란이 온 것이다.
-
 유닉스 OS을 쓰고 있다면 CRLF will be replaced by LF in… 에러 메시지가 뜰 것이고, 윈도우를 사용하고 있다면 LF will be replaced by CRLF in… 에러 메시지가 뜰 것이다.
-
 둘 중 뭐든간에 해결 방법은 같다. Git은 똑똑해서 이를 자동 변환해주는 core.autocrlf 라는 기능을 가지고 있는데, 이 기능을 켜주기만 하면 된다.
-
-
 
 해답은 core.autocrlf 를 켜는 것!
 
