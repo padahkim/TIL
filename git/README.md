@@ -177,4 +177,8 @@ git config --global core.autocrlf true input
 혹은 이러한 변환 기능을 원하지 않고, 그냥 에러 메시지 끄고 알아서 작업하고 싶은 경우에는 아래 명령어로 경고메시지 기능인 core.safecrlf를 꺼주면 된다.
 
 git config --global core.safecrlf false
+----------GitHub 디렉토리 화살표 표시 -> 폴더 접근 불가능-----------
+.git 파일 제거
+git rm --cached . -rf 명령어로 해당 스테이지의 파일을 제거합니다.
+add - commit - push 진행
 ```
