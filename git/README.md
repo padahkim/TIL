@@ -9,6 +9,7 @@ Version control system
 - [깃 명령어 실행 순서(로컬폴더 시작) by wayhome25](https://github.com/wayhome25/git_practice/blob/master/README.md#%EC%A3%BC%EC%9A%94-%EB%AA%85%EB%A0%B9%EC%96%B4)
 - [Git Error CRLF해결](https://blog.jaeyoon.io/2018/01/git-crlf.html)
 - [Git subtree이용 폴더합치기](https://hanco.tistory.com/9)
+- [Repository합치기](https://hanco.tistory.com/9)
 # Terminologies
 
 ### **Snapshots**
@@ -104,7 +105,9 @@ Github과 같은 클라우드에 저장된 Git 프로젝트의 현재 상태를 
 ### git commit -m "Delete sample.txt"
 git add .로 필요없는 파일까지 전부 커밋해버렸을때 로컬에서는 남겨놓고 깃에서만 삭제
 
-
+### subtree
+폴더를 안에 새로 생성 할때 사용. 리포지토리 
+ex) git subtree add --prefix=Baekjoon https://github.com/hanbeene/BAEKJOON_answer.git main
 
 
 
