@@ -10,6 +10,7 @@ Version control system
 - [Git Error CRLF해결](https://blog.jaeyoon.io/2018/01/git-crlf.html)
 - [Git subtree이용 폴더합치기](https://hanco.tistory.com/9)
 - [Repository합치기](https://hanco.tistory.com/9)
+- [git 잔디 안채워질](https://equus3144.medium.com/git-push-%EA%B2%B0%EA%B3%BC%EB%AC%BC%EC%9D%B4-github-%EC%9E%94%EB%94%94%EC%97%90-%EB%B0%98%EC%98%81%EC%9D%B4-%EC%95%88%EB%90%A0-%EB%95%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0-5968a988b212)
 # Terminologies
 
 ### **Snapshots**
@@ -185,3 +186,32 @@ git config --global core.safecrlf false
 git rm --cached . -rf 명령어로 해당 스테이지의 파일을 제거합니다.
 add - commit - push 진행
 ```
+
+
+----------GitHub 잔디 안채워질 때 유저/이메일 재설정으로 문제의 경우-----------
+깃헙은 메인(마스터) 브랜치에 커밋된 기록만 잔디에 기록으로 남는다. 메인(마스터) 브런치 외의 다른 브런치에서 push한 기록은 잔디가 안만들어짐. 
+(master로 merge하면 해결가능)
+
+
+
+# Git config 설정 확인하기 
+$ git config --global --list
+
+$ git config --list 
+ 
+# Git config 설정 끄기
+Q   
+# user.name user.email 설정하기 
+git config user.name "user 이름"
+git config user.email "user 이메일"
+
+git config --global user.name "user 이름"
+git config --global user.email "user 이메일"
+ 
+# user.name과 user.email 삭제하기 
+git config --unset user.name
+git config --unset user.email
+
+git config --unset --global user.name
+git config --unset --global user.email
+
