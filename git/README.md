@@ -215,3 +215,23 @@ git config --unset user.email
 git config --unset --global user.name
 git config --unset --global user.email
 
+#  맥/리눅스 명령어 윈도우 명령어
+
+open . --------->  start .
+ctrl + K ---------> ctrl + L
+ls ---------> dir
+rm ---------> del
+cat ---------> type
+ls -al ---------> dir /a (숨김파일까지 나타냄)
+mv ---------> move 
+rm -rf .git ---------> 윈도 폴더 지우기  rmdir /s 디렉터리명   /를 붙이면 디렉터리가 비어있지 않아도 지울 수 있다. or DEL /Q /S /F <FILE/DIR>
+
+cd .. 뒤로돌아오기
+
+
+
+유닉스의 rm(remove) 명령어는 파일을 삭제하는 명령어다. 위의 짤에 있는 sudo(super user do)는 관리자(root 계정)의 권한으로 실행한다는 말이며, 뒤의 -rf는 옵션이다.[2] -r(--recursive, 재귀)는 폴더를 삭제하기 위해 재귀적 삭제를 실행하도록 하는 옵션이고, -f(--force)는 읽기 전용처럼 액세스 권한이 없는 파일도 강제로 삭제하는 옵션이다. /는 리눅스 파일 시스템의 최상위 디렉토리, root이다. 즉, 윈도에서의 format c: 수준 이상. C를 포함한 모든 드라이브를 한꺼번에 포맷하는 것과 비슷하다.[3]
+
+유닉스 계열은 보조 기억장치를 연결할 때 윈도우처럼 드라이브 문자(C, D 등등)를 쓰지 않고 / 아래의 하위 디렉토리(폴더)에 마운트한다. 따라서 이 명령은 마운트하고 있던 모든 장치의 내용까지 날려버린다.
+
+단, 윈도우의 format c:와 유닉스/리눅스의 rm -rf는 개념이 다르다. rm은 삭제 명령어가 맞지만, format c:는 c 드라이브를 포맷하라는 명령어이지 삭제 명령이 아니다.[4] 포맷 과정에서 삭제가 이루어지기에 결과가 비슷해지는 것이다. 윈도우 커맨드 라인에서는 del /f /s /q c: 또는 rd /s /q c: 가 이와 비슷하다. 여기서 /s(remove Subdirectories)는 rm의 -r(Recursive) 와 같이 하위의 폴더/파일을 모두 지우고, /q(Quiet)는 이 과정에서 사용자의 동의를 구하지 않는다.[5] /f(Force)는 rm의 -f와 같다.
